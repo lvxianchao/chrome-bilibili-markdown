@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Bilibili Markdown",
+    "version": "1.0.0",
+    "description": "使用 Markdown 撰写哔哩哔哩（bilibili.com）专栏文章",
+    "homepage_url": "https://www.github.com/lvxianchao/bilibili-markdown",
+    "icons": {
+        "16": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
+    },
+    "browser_action": {
+        "default_icon": "images/icon.png",
+        "default_title": "用 Markdown 撰写 B 站专栏"
+    },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "*://*/*"
+    ],
+    "background": {
+        "page": "views/background/background.html"
+    }
+}

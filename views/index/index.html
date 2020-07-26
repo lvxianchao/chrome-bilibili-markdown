@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../../lib/bootstrap/bootstrap.min.css">
+        <title>Bilibili Markdown</title>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="https://github.com/lvxianchao/chrome-bilibili-markdown">
+                    <img src="/images/icon.png" style="width: 30px; height: 30px" class="d-inline-block align-top" alt="Bilibili Markdown">
+                    <span class="text-info">Bilibili Markdown</span>
+                    <svg id="icon-status-error" t="1595744378159" class="icon" style="width: 20px; height: 20px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1174" width="200" height="200">
+                        <path d="M512 64a448 448 0 1 1 0 896A448 448 0 0 1 512 64z m0 64a384 384 0 1 0 0 768A384 384 0 0 0 512 128z m0 483.2A246.208 246.208 0 0 1 741.376 768h-67.52C635.328 702.4 590.528 671.872 512 671.872c-78.528 0-125.12 35.712-160.64 96.128H282.624A246.208 246.208 0 0 1 512 611.2z m157.888-251.264a48 48 0 1 1 0 96 48 48 0 0 1 0-96z m-315.264 0a48 48 0 1 1 0 96 48 48 0 0 1 0-96z" p-id="1175" fill="#d81e06"></path>
+                    </svg>
+                    <svg id="icon-status-success" t="1595744356333" class="icon" style="width: 20px; height: 20px; display: none;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1008" width="200" height="200">
+                        <path d="M512 64a448 448 0 1 1 0 896A448 448 0 0 1 512 64z m0 64a384 384 0 1 0 0 768A384 384 0 0 0 512 128zM282.624 611.2H351.36c35.52 60.416 82.112 96.128 160.64 96.128 73.92 0 117.888-27.072 155.008-84.928l6.848-11.2h67.52a246.208 246.208 0 0 1-453.76 11.84l-4.992-11.84H351.36z m387.2-251.264a48 48 0 1 1 0 96 48 48 0 0 1 0-96z m-315.2 0a48 48 0 1 1 0 96 48 48 0 0 1 0-96z" p-id="1009" fill="#1afa29"></path>
+                    </svg>
+                </a>
+    
+                <a target="_blank" href="https://member.bilibili.com/v2#/upload/text/edit" class="btn btn-outline-info ml-auto mr-2">投稿</a>
+                <button class="btn btn-outline-warning my-2" type="submit" id="btn-publish">发布</button>
+            </div>
+        </nav>
+        
+        
+        <div class="container">
+            <form id="form" action="https://api.bilibili.com/x/article/creative/draft/addupdate" method="post">
+                <input type="hidden" name="aid" id="aid" value="">
+                <input type="hidden" name="csrf" id="csrf" value="">
+                
+                <div class="form-group mt-4">
+                    <label for="title">标题</label>
+                    <input type="text" id="title" class="form-control" value="" autocomplete="off">
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">正文</label>
+                    <textarea name="content" id="content" class="form-control" rows="20"></textarea>
+                </div>
+            </form>
+        </div>
+    </body>
+    
+    <script src="../../lib/common/showdown.min.js"></script>
+    <script src="../../lib/common/axios.min.js"></script>
+    <script type="module" src="index.js"></script>
+</html>
