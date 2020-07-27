@@ -24,7 +24,8 @@ chrome.browserAction.onClicked.addListener(() => {
         // B 站的逻辑是：标题更改以后触发一次请求，获取 aid 参数，然后再发起一次请求保存内容。
         // 所以这里忽略第一次请求，因为拿不到 aid 参数。
         const form = details.requestBody.formData;
-        if (form.aid) {
+        console.log(details);
+        if (form && form.aid) {
             db.set({
                 aid: form.aid[0],
                 csrf: form.csrf[0],
