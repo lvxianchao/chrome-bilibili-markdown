@@ -25,6 +25,7 @@ import db from '../../utils/Db.js'
     document.getElementById('btn-publish').addEventListener('click', () => {
         db.get(null, data => {
             let markdown = document.getElementById('content').value;
+            let loading = layer.load(1, {scrollbar: false, time: 5000, shade: 0.7});
             BilibiliMarkdown(data.csrf, markdown).then(content => {
                 axios({
                     method: 'post',
@@ -49,11 +50,15 @@ import db from '../../utils/Db.js'
                         content: content,
                     }
                 }).then(response => {
-                    response.data.code === 0 ? alert('成功') : alert('失败');
+                    response.data.code === 0
+                        ? layer.alert('成功', {icon: 1, title: 'Bilibili Markdown'})
+                        : layer.alert('失败', {icon: 2, title: 'Bilibili Markdown'});
+                    layer.close(loading);
                 });
             });
         });
     });
+
 
     async function BilibiliMarkdown(csrf, markdown) {
         let html = new showdown.Converter().makeHtml(markdown);
@@ -98,6 +103,7 @@ import db from '../../utils/Db.js'
         return new Promise((resolve) => setTimeout(resolve, time));
     }
 
+
     function getBase64Image(img) {
         let canvas = document.createElement("canvas");
         canvas.width = img.width;
@@ -107,6 +113,7 @@ import db from '../../utils/Db.js'
         let ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
         return canvas.toDataURL("image/" + ext);
     }
+
 
     function dataURLtoBlob(dataUrl) {
         let arr = dataUrl.split(','),
