@@ -14,8 +14,6 @@ import db from '../../utils/Db.js'
                 document.getElementById('icon-status-success').style.display = '';
                 document.getElementById('icon-status-error').style.display = 'none';
                 document.getElementById('title').value = data.title;
-                document.getElementById('aid').value = data.aid;
-                document.getElementById('csrf').value = data.csrf;
             }
         });
     }, 500);
